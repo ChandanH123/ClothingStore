@@ -26,12 +26,7 @@ struct ProductListView: View {
                     
                 case .loaded:
                     List(viewModel.products) { product in
-                        VStack(alignment: .leading) {
-                            Text(product.title)
-                                .font(.headline)
-                            Text(product.formattedPrice)
-                                .foregroundColor(.green)
-                        }
+                        ProductRowView(product: product)
                     }
                     .refreshable {
                         await viewModel.refreshProducts()
