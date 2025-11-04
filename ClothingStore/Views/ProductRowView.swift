@@ -112,5 +112,14 @@ struct ProductRowView: View {
 
 
 #Preview {
-    ProductRowView(product: Product(id: 01, title: "Macbook", price: 63.54, description: "Powerful laptop.", category: "Laptops", image: "https://m.media-amazon.com/images/I/81jMsojO7vL.jpg"))
+    ProductRowView(
+        product: Product(
+            id: 1,
+            title: "Sample T-Shirt",
+            price: 29.99,
+            description: "A comfortable cotton t-shirt",
+            category: "clothing",
+            image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+        )
+    )
 }

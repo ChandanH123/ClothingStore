@@ -26,7 +26,9 @@ struct ProductListView: View {
                     
                 case .loaded:
                     List(viewModel.products) { product in
-                        ProductRowView(product: product)
+                        NavigationLink(destination: ProductDetailView(product: product)) {
+                            ProductRowView(product: product)
+                        }
                     }
                     .refreshable {
                         await viewModel.refreshProducts()
