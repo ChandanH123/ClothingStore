@@ -14,7 +14,7 @@ enum Constants {
     
     // static means this belongs to the type itself, not instances
     // You access it as Constants.baseURL (not need to create Constants())
-    static let baseURL = "https://fakestoreapi.com"
+    static let baseURL = "https://dummyjson.com"
     
     // Nested enum for organizing endpoints
     enum Endpoints {
@@ -23,6 +23,6 @@ enum Constants {
         static let products = "/products"
         
         // Path to get all categories
-        static let categories = "/products/categories"
+        static let categories = "/products/category-list"
     }
 }

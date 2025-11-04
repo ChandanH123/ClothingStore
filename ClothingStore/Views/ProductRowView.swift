@@ -10,15 +10,21 @@ import SwiftUI
 // Reusable row component
 struct ProductRowView: View {
     
+    // MARK: - Properties
+    
     let product: Product
+    
+    // MARK: - Body
     
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
             
+            // MARK: - Product Image
+            
             // AsyncImage loads images asynchronously from URL
             // url: parameter takes optional URL
             // URL(string:) converts string to URL (optional)
-            AsyncImage(url: URL(string: product.image)) { phase in
+            AsyncImage(url: URL(string: product.mainImage)) { phase in
                 
                 // phase represents loading state
                 // switch on phase to handle different states
@@ -54,6 +60,8 @@ struct ProductRowView: View {
                 }
             }
             
+            // MARK: - Product Details
+            
             // Product details section
             VStack(alignment: .leading, spacing: 4) {
                 Text(product.title)
@@ -74,6 +82,8 @@ struct ProductRowView: View {
                 // Spacer pushes content to edges
                 Spacer()
                 
+                // MARK: - Price & Rating Row
+                
                 // Bottom row with price and rating
                 HStack {
                     // Price text
@@ -85,23 +95,20 @@ struct ProductRowView: View {
                     // Spacer pushes rating to right
                     Spacer()
                     
-                    // Optional binding: only run if rating exists
-                    // 'if let' unwraps optional
-//                    if let rating = product.rating {
-//                        
-//                        HStack(spacing: 4) {
-//                            // Star icon
-//                            Image(systemName: "star.fill")
-//                                .font(.caption)
-//                                .foregroundColor(.yellow)
-//                            
-//                            // Rating number
-//                            // String(format:) creates formatted string
-//                            // "%.1f" means 1 decimal place
-//                            Text(String(format: "%.1f", rating.rate))
-//                                .font(.caption)
-//                        }
-//                    }
+                    if product.rating > 0 {
+                        HStack(spacing: 4) {
+                            // Star icon
+                            Image(systemName: "star.fill")
+                                .font(.caption)
+                                .foregroundColor(.yellow)
+                            
+                            // Rating number
+                            // String(format:) creates formatted string
+                            // "%.1f" means 1 decimal place
+                            Text(String(format: "%.1f", product.rating))
+                                .font(.caption)
+                        }
+                    }
                 }
             }
         }
@@ -110,16 +117,21 @@ struct ProductRowView: View {
     }
 }
 
+// MARK: - Preview
 
 #Preview {
     ProductRowView(
         product: Product(
             id: 1,
-            title: "Sample T-Shirt",
-            price: 29.99,
-            description: "A comfortable cotton t-shirt",
-            category: "clothing",
-            image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+            title: "Essence Mascara Lash Princess",
+            price: 9.99,
+            description: "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects.",
+            category: "beauty",
+            images:[
+                "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png"
+            ],
+            rating: 4.94,
+            brand: "Essence"
         )
     )
 }

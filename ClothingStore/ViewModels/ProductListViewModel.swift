@@ -47,8 +47,11 @@ class ProductListViewModel: ObservableObject {
         do {
             // try: this can throw error
             // await: wait for async operation
-            // Fetch products and store in property
-            products = try await productService.fetchProducts()
+            // Fetch ProductsResponse which contains the products array
+            let productsResponse = try await productService.fetchProducts()
+            
+            // Extract the products array from the response
+            products = productsResponse.products
             
             // If successful, update state to loaded
             state = .loaded

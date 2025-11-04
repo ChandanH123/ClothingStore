@@ -8,16 +8,19 @@
 import Foundation
 
 // Product struct represents a single product
-// Codable: Can be converted to/from JSON automatically
-// Identifiable: Has an 'id' property for SwiftUI List tracking
+// Codable: Allows encoding/decoding to/from JSON
+// Identifiable: Required for List and ForEach, provides unique 'id'
 // Equatable: Can compare two products with ==
 struct Product: Codable, Identifiable, Equatable {
+    
     let id: Int
     let title: String
     let price: Double
     let description: String
     let category: String
-    let image: String
+    let images: [String] // This is the main product image URL
+    let rating: Double
+    let brand: String?       // Brand name (Nike, Apple, etc.)
     
     // Computed property: calculates value when accessed
     // 'var' because it's computed (not stored)
@@ -29,9 +32,29 @@ struct Product: Codable, Identifiable, Equatable {
         String(format: "$%.2f", price)
     }
     
-    // Equatable conformance for comparing products
-    // Swift auto-synthesizes this, but we can customize down below, if needed
-    static func == (lhs: Product, rhs: Product) -> Bool {
-        lhs.id == rhs.id // Two products are equal if they have the same ID
+    var mainImage: String {
+        return images.first ?? ""
     }
+
+    // Custom CodingKeys to map JSON keys to Swift properties
+    // This tells Swift how to decode the JSON
+    enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case price
+        case description
+        case category
+        case images
+        case rating
+        case brand
+    }
+}
+
+// MARK: - ProductsResponse Wrapper
+
+struct ProductsResponse: Codable {
+    let products: [Product]
+    let total: Int
+    let skip: Int // How many items were skipped (for pagination)
+    let limit: Int // How many items are returned in this response
 }

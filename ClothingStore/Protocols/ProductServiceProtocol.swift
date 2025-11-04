@@ -16,7 +16,7 @@ protocol ProductServiceProtocol {
         // - async: runs asynchronously
         // - throws: can throw errors
         // - -> [Product]: returns array of Product
-    func fetchProducts() async throws -> [Product]
+    func fetchProducts() async throws -> ProductsResponse
     
     // Fetch single product by ID
     // Takes Int parameter, returns single Product

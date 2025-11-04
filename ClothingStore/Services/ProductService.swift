@@ -11,37 +11,35 @@ import Foundation
 // : ProductServiceProtocol means it must implement all required methods
 class ProductService: ProductServiceProtocol {
     
-    // Dependency injection: store NetworkManager
-    // private: only accessible within this class
+    // MARK: - Properties
+    
+    // Dependency injection of NetworkManager
     private let networkManager: NetworkManager
+    
+    // MARK: - Initializer
     
     // Initializer with default parameter
     // = .shared means if no argument provided, use NetworkManager.shared
     // This allows injecting mock NetworkManager for testing
     init(networkManager: NetworkManager = .shared) {
-        // self.networkManager refers to property above
-        // networkManager (no self) refers to parameter
         self.networkManager = networkManager
     }
     
-    // Implementation of protocol requirement
-    func fetchProducts() async throws -> [Product] {
+    // MARK: - Protocol Methods
+    
+    // Fetch all products and return the full response
+    func fetchProducts() async throws -> ProductsResponse {
         
         // Call generic fetch method
-        // Specify type as [Product] after try await
-        // Swift infers we want array of Product from return type
-        return try await networkManager.fetch(
-            endpoint: Constants.Endpoints.products
-        )
+        // Return type is ProductsResponse (the full wrapper)
+        // Swift infers from return type that we want ProductsResponse
+        return try await networkManager.fetch(endpoint: Constants.Endpoints.products)
     }
     
-    // Implementation of second protocol requirement
+    // Fetch single product by ID
     func fetchProduct(id: Int) async throws -> Product {
         
         // String interpolation: \(id) inserts id value
-        // Creates endpoint like "/products/5"
-        return try await networkManager.fetch(
-            endpoint: "\(Constants.Endpoints.products)/\(id)"
-        )
+        return try await networkManager.fetch(endpoint: "\(Constants.Endpoints.products)/\(id)")
     }
 }
