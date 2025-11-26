@@ -9,13 +9,20 @@ import SwiftUI
 
 struct CheckoutView: View {
     let product: Product
+    @State var showAlert = false
     @EnvironmentObject private var coordinator: ProductCoordinator
     
     var body: some View {
         Text("Checkout for \(product.title) - $\(product.price, specifier: "%.2f")")
             .padding()
         Button("Buy now!") {
-            coordinator.popToRoot()
+            showAlert = true
+        }
+        .alert("Are you sure?", isPresented: $showAlert) {
+            Button("Yes", role: .destructive) {
+                coordinator.popToRoot()
+            }
+            Button("Cancel", role: .cancel) {}
         }
         .navigationTitle("Check out")
     }
