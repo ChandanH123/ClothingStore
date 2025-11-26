@@ -6,8 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		17FE4DD02ED720FC00D84109 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17DF49EE2EB87E9F007D025C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17DF49F52EB87E9F007D025C;
+			remoteInfo = ClothingStore;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		17DF49F62EB87E9F007D025C /* ClothingStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClothingStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		17FE4DCC2ED720FB00D84109 /* ClothingStoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClothingStoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -16,10 +27,22 @@
 			path = ClothingStore;
 			sourceTree = "<group>";
 		};
+		17FE4DCD2ED720FB00D84109 /* ClothingStoreTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ClothingStoreTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		17DF49F32EB87E9F007D025C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17FE4DC92ED720FB00D84109 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				17DF49F82EB87E9F007D025C /* ClothingStore */,
+				17FE4DCD2ED720FB00D84109 /* ClothingStoreTests */,
 				17DF49F72EB87E9F007D025C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				17DF49F62EB87E9F007D025C /* ClothingStore.app */,
+				17FE4DCC2ED720FB00D84109 /* ClothingStoreTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +95,29 @@
 			productReference = 17DF49F62EB87E9F007D025C /* ClothingStore.app */;
 			productType = "com.apple.product-type.application";
 		};
+		17FE4DCB2ED720FB00D84109 /* ClothingStoreTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17FE4DD22ED720FC00D84109 /* Build configuration list for PBXNativeTarget "ClothingStoreTests" */;
+			buildPhases = (
+				17FE4DC82ED720FB00D84109 /* Sources */,
+				17FE4DC92ED720FB00D84109 /* Frameworks */,
+				17FE4DCA2ED720FB00D84109 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				17FE4DD12ED720FC00D84109 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				17FE4DCD2ED720FB00D84109 /* ClothingStoreTests */,
+			);
+			name = ClothingStoreTests;
+			packageProductDependencies = (
+			);
+			productName = ClothingStoreTests;
+			productReference = 17FE4DCC2ED720FB00D84109 /* ClothingStoreTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -82,6 +130,11 @@
 				TargetAttributes = {
 					17DF49F52EB87E9F007D025C = {
 						CreatedOnToolsVersion = 16.3;
+					};
+					17FE4DCB2ED720FB00D84109 = {
+						CreatedOnToolsVersion = 16.3;
+						LastSwiftMigration = 1630;
+						TestTargetID = 17DF49F52EB87E9F007D025C;
 					};
 				};
 			};
@@ -100,12 +153,20 @@
 			projectRoot = "";
 			targets = (
 				17DF49F52EB87E9F007D025C /* ClothingStore */,
+				17FE4DCB2ED720FB00D84109 /* ClothingStoreTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		17DF49F42EB87E9F007D025C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17FE4DCA2ED720FB00D84109 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +183,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		17FE4DC82ED720FB00D84109 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		17FE4DD12ED720FC00D84109 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17DF49F52EB87E9F007D025C /* ClothingStore */;
+			targetProxy = 17FE4DD02ED720FC00D84109 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		17DF49FF2EB87EA2007D025C /* Debug */ = {
@@ -304,6 +380,45 @@
 			};
 			name = Release;
 		};
+		17FE4DD32ED720FC00D84109 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X3QT578937;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chandan.ClothingStoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ClothingStore.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ClothingStore";
+			};
+			name = Debug;
+		};
+		17FE4DD42ED720FC00D84109 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X3QT578937;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chandan.ClothingStoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ClothingStore.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ClothingStore";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -321,6 +436,15 @@
 			buildConfigurations = (
 				17DF4A022EB87EA2007D025C /* Debug */,
 				17DF4A032EB87EA2007D025C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		17FE4DD22ED720FC00D84109 /* Build configuration list for PBXNativeTarget "ClothingStoreTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17FE4DD32ED720FC00D84109 /* Debug */,
+				17FE4DD42ED720FC00D84109 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

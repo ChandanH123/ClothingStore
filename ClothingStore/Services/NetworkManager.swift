@@ -8,7 +8,7 @@
 import Foundation
 
 // Class to handle all network requests
-class NetworkManager {
+class NetworkManager: NetworkManagerProtocol {
     
     // Singleton pattern: only one instance exists
     // 'static' means it belongs to the type, not instances

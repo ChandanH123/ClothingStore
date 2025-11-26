@@ -14,14 +14,14 @@ class ProductService: ProductServiceProtocol {
     // MARK: - Properties
     
     // Dependency injection of NetworkManager
-    private let networkManager: NetworkManager
+    private let networkManager: NetworkManagerProtocol
     
     // MARK: - Initializer
     
     // Initializer with default parameter
     // = .shared means if no argument provided, use NetworkManager.shared
     // This allows injecting mock NetworkManager for testing
-    init(networkManager: NetworkManager = .shared) {
+    init(networkManager: NetworkManagerProtocol = NetworkManager.shared) {
         self.networkManager = networkManager
     }
     

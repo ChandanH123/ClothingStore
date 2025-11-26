@@ -10,7 +10,7 @@ import Foundation
 
 // Custom error enum
 // LocalizedError protocol provides user-friendly error messages
-enum NetworkError: LocalizedError {
+enum NetworkError: LocalizedError, Equatable {
     
     // Case for when URL creation fails
     case invalidURL
