@@ -13,6 +13,7 @@ struct ProductDetailView: View {
     
     let product: Product
     @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject private var coordinator: ProductCoordinator
     
     // MARK: - Body
     
@@ -123,11 +124,20 @@ struct ProductDetailView: View {
                             .font(.body)
                             .foregroundColor(.secondary)
                     }
+                    
+                    // Divider line
+                    Divider()
+                    
+                    // MARK: - Checkout Section
+                    Button("Checkout") {
+                        coordinator.showCheckout(self.product)
+                    }
+                    .buttonStyle(.bordered)
                 }
                 .padding(.horizontal)
             }
         }
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Product Detail")
     }
 }
 

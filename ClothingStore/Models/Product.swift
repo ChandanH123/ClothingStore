@@ -11,7 +11,7 @@ import Foundation
 // Codable: Allows encoding/decoding to/from JSON
 // Identifiable: Required for List and ForEach, provides unique 'id'
 // Equatable: Can compare two products with ==
-struct Product: Codable, Identifiable, Equatable {
+struct Product: Codable, Identifiable, Equatable, Hashable {
     
     let id: Int
     let title: String

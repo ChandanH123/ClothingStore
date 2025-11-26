@@ -12,49 +12,55 @@ struct ProductListView: View {
     // It persists across view updates
     // private: only accessible within this view
     @StateObject private var viewModel = ProductListViewModel()
+    @EnvironmentObject private var coordinator: ProductCoordinator
     
     var body: some View {
-        NavigationStack {
-            ZStack {
-                switch viewModel.state {
-                case .idle:
-                    Text("Pull to load products")
-                        .foregroundColor(.secondary)
-                    
-                case .loading:
-                    ProgressView("Loading products...")
-                    
-                case .loaded:
-                    List(viewModel.products) { product in
-                        NavigationLink(destination: ProductDetailView(product: product)) {
-                            ProductRowView(product: product)
+        ZStack {
+            switch viewModel.state {
+            case .idle:
+                Text("Pull to load products")
+                    .foregroundColor(.secondary)
+                
+            case .loading:
+                ProgressView("Loading products...")
+                
+            case .loaded:
+                ScrollView(showsIndicators: false) {
+                    LazyVStack {
+                        ForEach(viewModel.products) { product in
+                            Button {
+                                coordinator.showProductDetails(product)
+                            } label: {
+                                ProductRowView(product: product)
+                            }
                         }
                     }
-                    .refreshable {
-                        await viewModel.refreshProducts()
-                    }
-                    
-                case .error(let message):
-                    VStack(spacing: 16) {
-                        Image(systemName: "exclamationmark.triangle")
-                            .font(.largeTitle)
-                            .foregroundColor(.red)
-                        Text(message)
-                        Button("Retry") {
-                            // Task creates new async context
-                            Task {
-                                await viewModel.loadProducts()
-                            }
+                    .padding()
+                }
+                .refreshable {
+                    await viewModel.refreshProducts()
+                }
+                
+            case .error(let message):
+                VStack(spacing: 16) {
+                    Image(systemName: "exclamationmark.triangle")
+                        .font(.largeTitle)
+                        .foregroundColor(.red)
+                    Text(message)
+                    Button("Retry") {
+                        // Task creates new async context
+                        Task {
+                            await viewModel.loadProducts()
                         }
                     }
                 }
             }
-            .navigationTitle("Products")
-            // .task runs async code when view appears
-            .task {
-                // Load products when view first appears
-                await viewModel.loadProducts()
-            }
+        }
+        .navigationTitle("Products")
+        // .task runs async code when view appears
+        .task {
+            // Load products when view first appears
+            await viewModel.loadProducts()
         }
     }
 }
